@@ -1,0 +1,44 @@
+﻿<Application x:Class="SubHero.PointOfSale.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:data="clr-namespace:SubHero.Data.Enums;assembly=SubHero.Data"
+             xmlns:local="clr-namespace:SubHero.PointOfSale"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <!-- Size enumeration resource -->
+        <ObjectDataProvider x:Key="sizes" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="data:SizeType"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <!-- Bread enumeration resource -->
+        <ObjectDataProvider x:Key="breads" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="data:BreadType"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <!-- Cookie flavor enumeration resource -->
+        <ObjectDataProvider x:Key="cookieFlavors" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="data:CookieType"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <!-- Soda flavor enumeration resource -->
+        <ObjectDataProvider x:Key="sodaFlavors" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="data:SodaType"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <!-- Chip flavor enumeration resource -->
+        <ObjectDataProvider x:Key="chipFlavors" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="data:ChipType"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Application.Resources>
+</Application>

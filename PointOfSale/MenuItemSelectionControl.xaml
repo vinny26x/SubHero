@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="SubHero.PointOfSale.MenuItemSelectionControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SubHero.PointOfSale"
+             mc:Ignorable="d" 
+             d:DesignHeight="720" d:DesignWidth="680">
+    <Border BorderBrush="Black" BorderThickness="2" Padding="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Text="Select Menu Items" FontSize="28" FontWeight="Bold" 
+                       HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <TextBlock Text="Entrees" FontSize="20" FontWeight="Bold" Margin="0,10,0,5"/>
+                    <WrapPanel>
+                        <Button Content="Custom Sandwich" Width="150" Height="60" Margin="5" FontSize="14" Click="AddCustomSandwich_Click"/>
+                        <Button Content="California Club Wrap" Width="150" Height="60" Margin="5" FontSize="14" Click="AddCaliforniaClubWrap_Click"/>
+                        <Button Content="Club Sub" Width="150" Height="60" Margin="5" FontSize="14" Click="AddClubSub_Click"/>
+                        <Button Content="Italian Sub" Width="150" Height="60" Margin="5" FontSize="14" Click="AddItalianSub_Click"/>
+                        <Button Content="Mediterranean Wrap" Width="150" Height="60" Margin="5" FontSize="14" Click="AddMediterraneanWrap_Click"/>
+                        <Button Content="Turkey Cranberry" Width="150" Height="60" Margin="5" FontSize="14" Click="AddTurkeyCranberry_Click"/>
+                        <Button Content="Veggie Sandwich" Width="150" Height="60" Margin="5" FontSize="14" Click="AddVeggieSandwich_Click"/>
+                    </WrapPanel>
+
+                    <TextBlock Text="Sides" FontSize="20" FontWeight="Bold" Margin="0,20,0,5"/>
+                    <WrapPanel>
+                        <Button Content="Apple" Width="150" Height="60" Margin="5" FontSize="14" Click="AddApple_Click"/>
+                        <Button Content="Chips" Width="150" Height="60" Margin="5" FontSize="14" Click="AddChips_Click"/>
+                        <Button Content="Side Salad" Width="150" Height="60" Margin="5" FontSize="14" Click="AddSideSalad_Click"/>
+                        <Button Content="Cookies" Width="150" Height="60" Margin="5" FontSize="14" Click="AddCookies_Click"/>
+                    </WrapPanel>
+
+                    <TextBlock Text="Drinks" FontSize="20" FontWeight="Bold" Margin="0,20,0,5"/>
+                    <WrapPanel>
+                        <Button Content="Fountain Drink" Width="150" Height="60" Margin="5" FontSize="14" Click="AddFountainDrink_Click"/>
+                        <Button Content="Iced Tea" Width="150" Height="60" Margin="5" FontSize="14" Click="AddIcedTea_Click"/>
+                        <Button Content="Lemonade" Width="150" Height="60" Margin="5" FontSize="14" Click="AddLemonade_Click"/>
+                    </WrapPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Border>
+</UserControl>

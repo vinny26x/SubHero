@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="SubHero.PointOfSale.EntreeCustomizationControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SubHero.PointOfSale"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="400">
+    <Border BorderBrush="DarkGray" BorderThickness="2" Padding="20">
+        <StackPanel>
+            <!-- Menu Item Info Control -->
+            <local:MenuItemInfoControl DataContext="{Binding}"/>
+
+            <!-- Customization Options -->
+            <GroupBox Header="Size" Margin="0,20,0,0" Padding="10">
+                <ComboBox ItemsSource="{Binding SizeOptions}"
+                         SelectedItem="{Binding Size}"
+                         FontSize="16"
+                         Margin="5"/>
+            </GroupBox>
+
+            <GroupBox Header="Bread" Margin="0,10,0,0" Padding="10">
+                <ComboBox ItemsSource="{Binding BreadOptions}"
+                         SelectedItem="{Binding Bread}"
+                         FontSize="16"
+                         Margin="5"/>
+            </GroupBox>
+
+            <TextBlock Text="Note: Ingredient customization coming in next milestone" 
+                      FontStyle="Italic" 
+                      Foreground="Gray" 
+                      Margin="0,20,0,0"
+                      TextWrapping="Wrap"/>
+        </StackPanel>
+    </Border>
+</UserControl>

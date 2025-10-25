@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="SubHero.PointOfSale.SideSaladCustomizationControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SubHero.PointOfSale"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="400">
+    <Border BorderBrush="DarkGray" BorderThickness="2" Padding="20">
+        <StackPanel>
+            <!-- Menu Item Info Control -->
+            <local:MenuItemInfoControl DataContext="{Binding}"/>
+
+            <!-- Customization Options -->
+            <GroupBox Header="Ingredients" Margin="0,20,0,0" Padding="10">
+                <StackPanel>
+                    <CheckBox Content="Feta Cheese" 
+                             IsChecked="{Binding FetaCheese}"
+                             FontSize="16"
+                             Margin="5"/>
+                    <CheckBox Content="Tomato" 
+                             IsChecked="{Binding Tomato}"
+                             FontSize="16"
+                             Margin="5"/>
+                    <CheckBox Content="Cucumber" 
+                             IsChecked="{Binding Cucumber}"
+                             FontSize="16"
+                             Margin="5"/>
+                    <CheckBox Content="Red Onion" 
+                             IsChecked="{Binding RedOnion}"
+                             FontSize="16"
+                             Margin="5"/>
+                    <CheckBox Content="Ranch Dressing" 
+                             IsChecked="{Binding RanchDressing}"
+                             FontSize="16"
+                             Margin="5"/>
+                    <CheckBox Content="Avocado" 
+                             IsChecked="{Binding Avocado}"
+                             FontSize="16"
+                             Margin="5"/>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+    </Border>
+</UserControl>

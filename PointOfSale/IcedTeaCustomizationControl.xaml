@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="SubHero.PointOfSale.IcedTeaCustomizationControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SubHero.PointOfSale"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="400">
+    <Border BorderBrush="DarkGray" BorderThickness="2" Padding="20">
+        <StackPanel>
+            <!-- Menu Item Info Control -->
+            <local:MenuItemInfoControl DataContext="{Binding}"/>
+
+            <!-- Customization Options -->
+            <GroupBox Header="Size" Margin="0,20,0,0" Padding="10">
+                <ComboBox ItemsSource="{StaticResource sizes}"
+                         SelectedItem="{Binding Size}"
+                         FontSize="16"
+                         Margin="5"/>
+            </GroupBox>
+
+            <GroupBox Header="Options" Margin="0,10,0,0" Padding="10">
+                <StackPanel>
+                    <CheckBox Content="Sweet" 
+                             IsChecked="{Binding Sweet}"
+                             FontSize="16"
+                             Margin="5"/>
+                    <CheckBox Content="Ice" 
+                             IsChecked="{Binding Ice}"
+                             FontSize="16"
+                             Margin="5"/>
+                    <CheckBox Content="Lemon" 
+                             IsChecked="{Binding Lemon}"
+                             FontSize="16"
+                             Margin="5"/>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+    </Border>
+</UserControl>
