@@ -92,7 +92,7 @@ namespace SubHero.Data.Entrees
                     OnPropertyChanged(nameof(Calories));
                     OnPropertyChanged(nameof(Price));
                     OnPropertyChanged(nameof(PreparationInformation));
-                    OnPropertyChanged(nameof(SizeOptions));  
+                    OnPropertyChanged(nameof(SizeOptions));
                 }
             }
         }
@@ -124,12 +124,12 @@ namespace SubHero.Data.Entrees
                     OnPropertyChanged(nameof(Calories));
                     OnPropertyChanged(nameof(Price));
                     OnPropertyChanged(nameof(PreparationInformation));
-                    OnPropertyChanged(nameof(BreadOptions));  
+                    OnPropertyChanged(nameof(BreadOptions));
                 }
             }
         }
 
-       
+
         /// <summary>
         /// Gets the available size options based on the current bread choice
         /// </summary>
@@ -189,6 +189,14 @@ namespace SubHero.Data.Entrees
 
                 return options;
             }
+        }
+
+        /// <summary>
+        /// Gets the collection of available ingredients for this entree
+        /// </summary>
+        public IEnumerable<IngredientItem> AvailableIngredients
+        {
+            get => Ingredients.Values;
         }
 
         /// <summary>
@@ -380,7 +388,24 @@ namespace SubHero.Data.Entrees
                 Default = isDefault,
                 Included = isDefault
             };
+
+            // Subscribe to ingredient property changes
+            ingredient.PropertyChanged += OnIngredientPropertyChanged;
+
             Ingredients[ingredientType] = ingredient;
+        }
+
+        /// <summary>
+        /// Handles property changes from individual ingredients
+        /// </summary>
+        private void OnIngredientPropertyChanged(object? sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(IngredientItem.Included))
+            {
+                OnPropertyChanged(nameof(Calories));
+                OnPropertyChanged(nameof(Price));
+                OnPropertyChanged(nameof(PreparationInformation));
+            }
         }
     }
 }

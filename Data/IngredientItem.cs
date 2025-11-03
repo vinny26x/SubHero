@@ -1,21 +1,52 @@
 ﻿using SubHero.Data.Enums;
+using System.ComponentModel;
 
 namespace SubHero.Data
 {
     /// <summary>
     /// Represents an ingredient for a menu item
     /// </summary>
-    public class IngredientItem
+    public class IngredientItem : INotifyPropertyChanged
     {
+        /// <summary>
+        /// Event raised when a property changes
+        /// </summary>
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        /// <summary>
+        /// Helper method to raise PropertyChanged event
+        /// </summary>
+        /// <param name="propertyName">Name of the property that changed</param>
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         /// <summary>
         /// The type of ingredient
         /// </summary>
         public IngredientType Ingredient { get; }
 
         /// <summary>
+        /// Backing field for Included property
+        /// </summary>
+        private bool _included = false;
+
+        /// <summary>
         /// Whether this ingredient is included in the menu item
         /// </summary>
-        public bool Included { get; set; } = false;
+        public bool Included
+        {
+            get => _included;
+            set
+            {
+                if (_included != value)
+                {
+                    _included = value;
+                    OnPropertyChanged(nameof(Included));
+                }
+            }
+        }
 
         /// <summary>
         /// Whether this ingredient is included by default in the menu item
@@ -82,14 +113,14 @@ namespace SubHero.Data
                     case IngredientType.Turkey:
                         return 25;
                     case IngredientType.Ham:
-                        return 150; 
-                   case IngredientType.CheddarCheese:
-                   case IngredientType.ProvoloneCheese:
-                        return 100; 
+                        return 150;
+                    case IngredientType.CheddarCheese:
+                    case IngredientType.ProvoloneCheese:
+                        return 100;
                     case IngredientType.SwissCheese:
-                        return 100;  
+                        return 100;
                     case IngredientType.Bacon:
-                        return 170;  
+                        return 170;
                     case IngredientType.Avocado:
                         return 200;
                     case IngredientType.Mayo:
