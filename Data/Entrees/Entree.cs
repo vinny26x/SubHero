@@ -78,7 +78,7 @@ namespace SubHero.Data.Entrees
                     _bread = value;
                 }
 
-                // After changing bread, try to apply attempted size if valid
+                // After changing bread, try to apply size
                 if (_attemptedSize.HasValue && IsValidBreadSizeCombination(_bread, _attemptedSize.Value))
                 {
                     _size = _attemptedSize.Value;
@@ -114,7 +114,7 @@ namespace SubHero.Data.Entrees
                 }
                 else
                 {
-                    _attemptedSize = value; // Remember the attempted size
+                    _attemptedSize = value; // Remember size
                 }
 
                 // notify if size actually changed
@@ -213,7 +213,7 @@ namespace SubHero.Data.Entrees
             {
                 decimal cost = BasePrice;
 
-                // Add ingredient costs ONLY for non-default ingredients
+                // Add ingredient costs 
                 foreach (var ingredient in Ingredients.Values)
                 {
                     if (ingredient.Included && !ingredient.Default)
@@ -270,7 +270,7 @@ namespace SubHero.Data.Entrees
                     }
                 }
 
-                // Apply size scaling
+                // Apply size 
                 switch (Size)
                 {
                     case SizeType.Small:
@@ -325,7 +325,7 @@ namespace SubHero.Data.Entrees
                     }
                 }
 
-                // Add instructions for non-default included ingredients
+                
                 foreach (var ingredient in Ingredients.Values)
                 {
                     if (ingredient.Included && !ingredient.Default)
@@ -389,7 +389,7 @@ namespace SubHero.Data.Entrees
                 Included = isDefault
             };
 
-            // Subscribe to ingredient property changes
+            
             ingredient.PropertyChanged += OnIngredientPropertyChanged;
 
             Ingredients[ingredientType] = ingredient;

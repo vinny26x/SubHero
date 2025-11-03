@@ -124,7 +124,7 @@ namespace SubHero.PointOfSale
 
             if (customizationControl != null)
             {
-                // Set the DataContext to the item being changed (if not already set)
+                // Set the DataContext to the item being changed 
                 if (customizationControl.DataContext == null)
                 {
                     customizationControl.DataContext = item;
@@ -192,7 +192,7 @@ namespace SubHero.PointOfSale
                 var entreeControl = new EntreeCustomizationControl();
                 entreeControl.DataContext = entree;
 
-                // IMPORTANT: Hide the "Make it a Combo" button since we're editing within a combo
+                //Hide the "Make it a Combo" button since we're editing within a combo
                 entreeControl.SetComboButtonVisibility(false);
 
                 customizationControl = entreeControl;
@@ -288,8 +288,8 @@ namespace SubHero.PointOfSale
             // Create new order in OrderSummary
             var newOrder = new Order();
 
-            // This is a bit tricky - we need to replace the order in OrderSummary
-            // The easiest way is to recreate the OrderSummary control
+            //need to replace the order in OrderSummary
+            //recreate the OrderSummary control
             var newOrderSummary = new OrderSummaryControl();
             newOrderSummary.EditItemRequested += OnEditItemRequested;
 
@@ -302,7 +302,7 @@ namespace SubHero.PointOfSale
 
             OrderSummary = newOrderSummary;
 
-            // Reset flags
+            // reset 
             _isEditingCombo = false;
 
             // Go back to menu
