@@ -1,0 +1,219 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Sub Hero!</h1>
+    <p class="lead">
+        Explore our delicious menu of customizable sandwiches, fresh sides, refreshing drinks, and convenient combos.
+        Build your perfect meal today!
+    </p>
+</div>
+
+<hr />
+
+<!-- ENTREES SECTION -->
+<section id="entrees" class="my-5">
+    <h2 class="mb-4">Entrees</h2>
+    <p class="text-muted">All our sandwiches, subs, and wraps made fresh to order.</p>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        @foreach (var entree in Model.Entrees)
+        {
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">@entree.Name</h5>
+                        <p class="card-text text-muted small">@entree.Description</p>
+
+                        <!-- Preparation Information -->
+                        @if (entree.PreparationInformation.Any())
+                        {
+                            <ul class="list-unstyled small">
+                                @foreach (var info in entree.PreparationInformation)
+                                {
+                                    <li class="text-info">• @info</li>
+                                }
+                            </ul>
+                        }
+
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="badge bg-success">$@entree.Price.ToString("F2")</span>
+                            <span class="badge bg-secondary">@entree.Calories cal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Ingredients Table -->
+    <div class="mt-5">
+        <h3>Available Ingredients</h3>
+        <p class="text-muted">Customize your sandwich with these fresh ingredients.</p>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Ingredient</th>
+                        <th>Calories</th>
+                        <th>Additional Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var ingredient in Model.Ingredients)
+                    {
+                        <tr>
+                            <td>@ingredient.Name</td>
+                            <td>@ingredient.Calories cal</td>
+                            <td>
+                                @if (ingredient.UnitCost > 0)
+                                {
+                                    <span class="text-success">+$@ingredient.UnitCost.ToString("F2")</span>
+                                }
+                                else
+                                {
+                                    <span class="text-muted">Free</span>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<hr />
+
+<!-- SIDES SECTION -->
+<section id="sides" class="my-5">
+    <h2 class="mb-4">Sides</h2>
+    <p class="text-muted">The perfect complement to any meal.</p>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+        @foreach (var side in Model.Sides)
+        {
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">@side.Name</h5>
+                        <p class="card-text text-muted small">@side.Description</p>
+
+                        <!-- Preparation Information -->
+                        @if (side.PreparationInformation.Any())
+                        {
+                            <ul class="list-unstyled small">
+                                @foreach (var info in side.PreparationInformation)
+                                {
+                                    <li class="text-info">• @info</li>
+                                }
+                            </ul>
+                        }
+
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="badge bg-success">$@side.Price.ToString("F2")</span>
+                            <span class="badge bg-secondary">@side.Calories cal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
+<hr />
+
+<!-- DRINKS SECTION -->
+<section id="drinks" class="my-5">
+    <h2 class="mb-4">Drinks</h2>
+    <p class="text-muted">Stay refreshed with our beverage selection.</p>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+        @foreach (var drink in Model.Drinks)
+        {
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">@drink.Name</h5>
+                        <p class="card-text text-muted small">@drink.Description</p>
+
+                        <!-- Preparation Information -->
+                        @if (drink.PreparationInformation.Any())
+                        {
+                            <ul class="list-unstyled small">
+                                @foreach (var info in drink.PreparationInformation)
+                                {
+                                    <li class="text-info">• @info</li>
+                                }
+                            </ul>
+                        }
+
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="badge bg-success">$@drink.Price.ToString("F2")</span>
+                            <span class="badge bg-secondary">@drink.Calories cal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
+<hr />
+
+<!-- COMBOS SECTION -->
+<section id="combos" class="my-5">
+    <h2 class="mb-4">Combos</h2>
+    <p class="text-muted">Save 20% when you bundle an entree, side, and drink!</p>
+
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        @foreach (var combo in Model.Combos)
+        {
+            <div class="col">
+                <div class="card h-100 border-primary">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            @combo.Name
+                            <span class="badge bg-primary ms-2">20% OFF</span>
+                        </h5>
+
+                        <!-- Preparation Information (includes all combo items) -->
+                        @if (combo.PreparationInformation.Any())
+                        {
+                            <ul class="list-unstyled small">
+                                @foreach (var info in combo.PreparationInformation)
+                                {
+                                    <li class="text-info">@info</li>
+                                }
+                            </ul>
+                        }
+
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="badge bg-success fs-6">$@combo.Price.ToString("F2")</span>
+                            <span class="badge bg-secondary">@combo.Calories cal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
+<style>
+    /* Optional: Add some custom styling */
+    .card {
+        transition: transform 0.2s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    section {
+        scroll-margin-top: 80px; /* Offset for navbar when using fragment links */
+    }
+</style>
